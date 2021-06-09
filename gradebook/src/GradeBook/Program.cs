@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GradeBook
 {
@@ -6,24 +7,36 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < args.Length; i++)
+            List<Book> booklist = new List<Book>();
+            double sum = 0.0;
+            int count = 0;
+
+            for (int i = 0; i < 10; i++)
             {
-                string arg = args[i];
-                Console.WriteLine($"arg: {arg}");
+                Book newBook = new Book($"Book {i}");
+
+                Random rd = new Random();
+                int rand_base_grade = rd.Next(1, 6);
+
+                newBook.AddGrade(rand_base_grade + (i/10));
+
+                booklist.Add(newBook);
             }
-
-            while (true)
+            
+            foreach (var book in booklist)
             {
-                Console.WriteLine("Enter your name, or (Q, q) to quit: ");
-                string name = Console.ReadLine();
+                Console.WriteLine($"Book_title:{book.get_book_title()}");
+                var grades = book.get_grades();
 
-                if (name == "Q" || name == "q")
+                foreach (var grade in grades)
                 {
-                   break; 
+                    sum += grade;
+                    count += 1;
+                    Console.WriteLine($"Grade: {grade}");
                 }
-                Console.WriteLine($"The number is: {name} \n");
             }
 
+            Console.WriteLine($"Avarage = {sum / count}");
         }
     }
 }
