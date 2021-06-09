@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace GradeBook {
-  class Book {
+  public class Book {
     private string book_title;
     private List<double> grades;
 
