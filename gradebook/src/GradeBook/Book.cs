@@ -1,4 +1,4 @@
-
+using System;
 using System.Collections.Generic;
 
 namespace GradeBook {
@@ -22,6 +22,25 @@ namespace GradeBook {
 
     public List<double> get_grades() {
       return grades;
+    }
+
+    public Statistics getStatistics() {
+
+      var result = new Statistics();
+      result.Avarage = 0.0;
+      result.High = double.MinValue;
+      result.Low = double.MaxValue;
+
+      foreach (var grade in grades)
+      {
+        result.Low = Math.Min(grade, result.Low);
+        result.High = Math.Max(grade, result.High);
+        result.Avarage += grade;
+      }
+
+      result.Avarage /= grades.Count;
+
+      return result;
     }
   }
 
