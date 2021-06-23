@@ -8,19 +8,26 @@ namespace GradeBook {
   
   public class TiteledObject
   {
-		public TiteledObject(string title)
-		{
-      this.title = title;
-		}
 
-		public string title  {
-        get;
-        set;
-     }
+    public TiteledObject(string title)
+    {
+      this.title = title;
+    }
+
+    public string title  {
+      get;
+      set;
+    }
   }
 
   
-  public class Book : TiteledObject {
+  public abstract class BookBase {
+
+  }
+
+
+  public class Book : TiteledObject
+  {
     private List<double> grades;
 
     // events
